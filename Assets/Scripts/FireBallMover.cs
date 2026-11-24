@@ -5,6 +5,7 @@ public class FireBallMover : MonoBehaviour
     [SerializeField] private float speed = 20f;
     [SerializeField] private float lifeTime = 3f;
     [SerializeField] private string targetTag = "Enemy";
+    [SerializeField] private GameObject explosionVFX;
     private Rigidbody rb;
 
     private void Awake()
@@ -25,12 +26,20 @@ public class FireBallMover : MonoBehaviour
         {
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null) enemyHealth.TakeDamage(1f);
+
+            PlayerHealth playerHealth = other.GetComponent<PlayerHealth>();
+            if (playerHealth != null) playerHealth.TakeDamage(1);
+
+            if (explosionVFX != null) Instantiate(explosionVFX, transform.position, Quaternion.identity);
+
             Destroy(gameObject);
             return;
         }
+
         // Si choca contra muros o suelo, se destruye
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            if (explosionVFX != null) Instantiate(explosionVFX, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

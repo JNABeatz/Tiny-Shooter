@@ -21,6 +21,9 @@ public class SpawnPortal : MonoBehaviour
             {
                 Vector3 pos = spawnPoint != null ? spawnPoint.position : transform.position + Vector3.up;
                 Instantiate(enemyPrefab, pos, Quaternion.identity);
+
+                ScoreBoardManager scoreBoard = FindAnyObjectByType<ScoreBoardManager>();
+                if (scoreBoard != null) scoreBoard.RefreshProgress();
             }
         }
     }
