@@ -177,6 +177,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxLives: 3
   fallThresholdY: -8
+  hitMaterial: {fileID: 2100000, guid: 7fb2a58f5e2154ffba64ab8232244ba0, type: 2}
+  hitFlashDuration: 0.5
 --- !u!1 &7849849300253761262
 GameObject:
   m_ObjectHideFlags: 0

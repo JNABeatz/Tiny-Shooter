@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class ScoreBoardManager : MonoBehaviour
@@ -11,9 +12,21 @@ public class ScoreBoardManager : MonoBehaviour
     public int LevelScore => levelScore;
     public int TotalScore => SavedTotalScore + levelScore;
     public bool HasAllStones => levelScore >= requiredStones;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetOnEnterPlayMode()
+    {
+        SavedTotalScore = 0;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            SavedTotalScore = 0;
+        }
+
         levelScore = 0;
         doorOpened = false;
         if (requiredStones <= 0)

@@ -7,6 +7,7 @@ public class VictoryUI : MonoBehaviour
     [SerializeField] private GameObject victoryPanel;
     [SerializeField] private TMP_Text finalScoreText;
     [SerializeField] private Button restartButton;
+    [SerializeField] private TMP_Text scoreText;
 
     void Awake()
     {
@@ -29,9 +30,12 @@ public class VictoryUI : MonoBehaviour
 
         if (finalScoreText != null)
         {
-            finalScoreText.text = "Puntuación obtenida: " + total;
+            finalScoreText.text = "Piedras obtenidas: " + total;
         }
-
+        if(scoreText != null)
+        {
+            scoreText.text = "";
+        }
         if (victoryPanel != null) victoryPanel.SetActive(true);
         Time.timeScale = 0f;
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 public class FireBallMover : MonoBehaviour
 {
     [SerializeField] private float speed = 20f;
-    [SerializeField] private float lifeTime = 3f;
+    [SerializeField] private float lifeTime = 2;
     [SerializeField] private string targetTag = "Enemy";
     [SerializeField] private GameObject explosionVFX;
     private Rigidbody rb;
